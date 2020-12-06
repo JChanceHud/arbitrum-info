@@ -37,19 +37,19 @@ Max Assertion Size (seconds): 50
 
 Below is a description of the scripts included in this repo.
 
-#### deploy.sh
+#### Deploy
 
 `npm run deploy`
 
-Deploys the Arbitrum global contracts such as `RollupFactory` and `GlobalInbox`. Should not need to be executed more than once. The global addresses above can be reused.
+Deploys the Arbitrum global contracts such as `RollupFactory` and `GlobalInbox`. Should not need to be executed more than once. The global addresses above can be reused for all rollups on the chain.
 
-#### deploy_rollup.sh
+#### Deploy Rollup
 
 `npm run deploy:rollup`
 
 Starts a webserver and opens a webpage for deploying an Arbitrum rollup.
 
-#### start.sh
+#### Start Validator
 
 `npm run start:validator`
 
@@ -70,8 +70,32 @@ Send the stake amount plus a small additional amount of Ether for transaction fe
 
 Once the transaction completes the validator will begin syncing the rollup and accept transactions on port 8547.
 
-#### deploy_contract.sh
+#### Deploy Contract
 
 `npm run deploy:contract`
 
 Compiles and deploys a simple contract to an Arbitrum chain. Run this command after `start:validator`.
+
+The contract in question is a bank supporting deposits, transfers, and withdrawals. (See `contracts/BankVault.sol`)
+
+#### Start Bank
+
+`npm run start:bank`
+
+Starts a webapp for interacting with the BankVault contract on the Arbitrum chain.
+
+To use the app open `http://localhost:8080` in an browser with Metamask installed.
+
+## Configuring Metamask
+
+Arbitrum exposes a pseudo-eth RPC api. To interact using Metmask go to Settings -> Networks -> Add Network.
+
+Name the network "Arbitrum" or similar, and add the following settings:
+
+```
+RPC URL: http://localhost:8547
+Chain ID: 48958245434896
+Currency Symbol: ETH
+```
+
+Note: These settings assume a local Arbitrum validator using the rollup at `0x3e58DD2f508fa7E30B8E226B6fC42C86fAD3f610`.
