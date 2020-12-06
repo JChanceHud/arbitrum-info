@@ -9,6 +9,7 @@
     "deploy:contract": "npm run compile && node scripts/deploy_contract.js",
     "compile": "sh scripts/compile.sh",
     "start:validator": "sh scripts/start.sh",
+    "start:bank": "sh scripts/start_bank.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Chance Hudson",

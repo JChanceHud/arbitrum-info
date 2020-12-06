@@ -32,8 +32,13 @@ contract BankVault {
   ArbSys constant system = ArbSys(0x0000000000000000000000000000000000000064);
   mapping (address => uint) balances;
 
+  event Deposit(address from, uint amount);
+  event Transfer(address from, address to, uint amount);
+  event Withdrawal(address from, address to, uint amount);
+
   receive() external payable {
     balances[msg.sender] += msg.value;
+    emit Deposit(msg.sender, msg.value);
   }
 
   function transfer(uint amount, address to) public {
@@ -41,6 +46,7 @@ contract BankVault {
     require(amount > 0, "BankVault: Invalid withdrawal amount");
     balances[msg.sender] -= amount;
     balances[to] += amount;
+    emit Transfer(msg.sender, to, amount);
   }
 
   function withdraw(uint _amount) public {
@@ -53,6 +59,7 @@ contract BankVault {
     require(amount > 0, "BankVault: Invalid withdrawal amount");
     balances[msg.sender] -= amount;
     system.withdrawEth{value: amount}(receiver);
+    emit Withdrawal(msg.sender, receiver, amount);
   }
 
   function balance(address owner) public view returns (uint) {

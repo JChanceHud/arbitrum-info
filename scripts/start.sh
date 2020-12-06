@@ -35,7 +35,7 @@ then
   echo "CONTRACT_ADDR=$CONTRACT_ADDR" >> "$ORIG_DIR/.env"
 fi
 
-if [ -d "$ORIG_DIR/rollups" && ! -d "$WORK_DIR/arbitrum/rollups" ]
+if [ -d "$ORIG_DIR/rollups" -a ! -d "$WORK_DIR/arbitrum/rollups" ]
 then
   cp -r "$ORIG_DIR/rollups" "$WORK_DIR/arbitrum/rollups"
 fi
