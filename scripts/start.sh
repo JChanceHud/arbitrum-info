@@ -43,7 +43,14 @@ fi
 if [ ! -d "$WORK_DIR/arbitrum/rollups" ]
 then
   yarn prod:initialize $CONTRACT_ADDR $RINKEBY_URL
-  cp -r "$WORK_DIR/arbitrum/rollups" "$ORIG_DIR/rollups"
 fi
+
+interrupt() {
+  cp -r "$WORK_DIR/arbitrum/rollups" "$ORIG_DIR/rollups"
+  exit
+}
+
+trap interrupt SIGINT
+trap interrupt SIGTSTP
 
 yarn deploy:validators $CONTRACT_ADDR --password=password

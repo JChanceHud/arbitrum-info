@@ -55,7 +55,7 @@ Starts a webserver and opens a webpage for deploying an Arbitrum rollup.
 
 Starts an Arbitrum transaction aggregator and validator. Starts an Arbitrum server on port 8547. This server exposes a standard Eth RPC API. Transaction costs are executed with a gas price of 0.
 
-Create an Arbitrum rollup using `deploy_rollup.sh` or supply the following address when asked: `0x3e58DD2f508fa7E30B8E226B6fC42C86fAD3f610`.
+Create an Arbitrum rollup using `npm run deploy:rollup` or supply the following address when asked: `0x3e58DD2f508fa7E30B8E226B6fC42C86fAD3f610`.
 
 On first launch the following will appear:
 
