@@ -1,4 +1,4 @@
-# Arbitrum
+# Arbitrum Research
 
 This repo contains everything needed to deploy an Arbitrum rollup chain.
 
@@ -33,25 +33,27 @@ Speed Limit: 1.0
 Max Assertion Size (seconds): 50
 ```
 
-## Deploy
-
-To deploy run
-
 ## Scripts
 
-Here is a description of the scripts included in this repo.
+Below is a description of the scripts included in this repo.
 
-### deploy.sh
+#### deploy.sh
+
+`npm run deploy`
 
 Deploys the Arbitrum global contracts such as `RollupFactory` and `GlobalInbox`. Should not need to be executed more than once. The global addresses above can be reused.
 
-### deploy_rollup.sh
+#### deploy_rollup.sh
+
+`npm run deploy:rollup`
 
 Starts a webserver and opens a webpage for deploying an Arbitrum rollup.
 
-### start.sh
+#### start.sh
 
-Starts an Arbitrum transaction aggregator and validator. Starts an Arbitrum server on port 8547. Solidity contracts can be deployed to this server.
+`npm run start:validator`
+
+Starts an Arbitrum transaction aggregator and validator. Starts an Arbitrum server on port 8547. This server exposes a standard Eth RPC API. Transaction costs are executed with a gas price of 0.
 
 Create an Arbitrum rollup using `deploy_rollup.sh` or supply the following address when asked: `0x3e58DD2f508fa7E30B8E226B6fC42C86fAD3f610`.
 
@@ -67,3 +69,9 @@ arb-tx-aggregator_1  | 2020/12/05 19:15:04 balance.go:39: Waiting for account 0x
 Send the stake amount plus a small additional amount of Ether for transaction fees to the supplied addresses. (`0x554854e2cb30d00381ffb068ad7fcf7a3f95567e` and `0x9010a811c2ff7c47904774fcb52cdd6175bfd209`)
 
 Once the transaction completes the validator will begin syncing the rollup and accept transactions on port 8547.
+
+#### deploy_contract.sh
+
+`npm run deploy:contract`
+
+Compiles and deploys a simple contract to an Arbitrum chain. Run this command after `start:validator`.
