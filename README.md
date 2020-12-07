@@ -66,7 +66,7 @@ arb-tx-aggregator_1  | 2020/12/05 19:15:04 arb-tx-aggregator.go:90: Aggregator s
 arb-tx-aggregator_1  | 2020/12/05 19:15:04 balance.go:39: Waiting for account 0x9010a811c2ff7c47904774fcb52cdd6175bfd209 to receive ETH
 ```
 
-Send the stake amount plus a small additional amount of Ether for transaction fees to the supplied addresses. (`0x554854e2cb30d00381ffb068ad7fcf7a3f95567e` and `0x9010a811c2ff7c47904774fcb52cdd6175bfd209`)
+Send the stake amount plus a small additional amount of Ether for transaction fees to the supplied addresses. (`0x554854e2cb30d00381ffb068ad7fcf7a3f95567e` and `0x9010a811c2ff7c47904774fcb52cdd6175bfd209` in the above example)
 
 Once the transaction completes the validator will begin syncing the rollup and accept transactions on port 8547.
 
