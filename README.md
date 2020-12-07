@@ -82,9 +82,19 @@ The contract in question is a bank supporting deposits, transfers, and withdrawa
 
 `npm run start:bank`
 
-Starts a webapp for interacting with the BankVault contract on the Arbitrum chain.
+Starts a webapp for interacting with the BankVault contract on the Arbitrum chain. The bank allows deposits, transfers and withdrawals inside an Arbitrum chain.
 
 To use the app open `http://localhost:8080` in an browser with Metamask installed.
+
+##### Bank Usage
+
+Start with Metamask connected to a Rinkeby node. Deposit funds into Arbitrum using the first box.
+
+Once this transaction completes switch Metamask to use an Arbitrum node. For configuration info, see the below section "Configuring Metamask".
+
+Once connected to an Arbitrum node you should see your balance in Metamask. Now go to the webpage and enter the amount you would like to deposit into the bank contract in the second section. Execute the transaction and your balance should update in the header section of the webpage.
+
+The transfer and withdraw sections work as expected. Withdrawals go directly to your Ethereum (rinkeby) network wallet.
 
 ## Configuring Metamask
 
