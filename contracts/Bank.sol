@@ -24,9 +24,9 @@ interface ArbSys {
   function getStorageAt(address account, uint256 index) external view returns (uint256);
 }
 
-/// BankVault stores Ether and allows users to transfer value to other users
+/// Bank stores Ether and allows users to transfer value to other users
 
-contract BankVault {
+contract Bank {
 
   // Can also be written as ArbSys(100) if you're cool
   ArbSys constant system = ArbSys(0x0000000000000000000000000000000000000064);
@@ -36,14 +36,14 @@ contract BankVault {
   event Transfer(address from, address to, uint amount);
   event Withdrawal(address from, address to, uint amount);
 
-  receive() external payable {
+  fallback() external payable {
     balances[msg.sender] += msg.value;
     emit Deposit(msg.sender, msg.value);
   }
 
   function transfer(uint amount, address to) public {
-    require(amount <= balances[msg.sender], "BankVault: Invalid withdrawal amount");
-    require(amount > 0, "BankVault: Invalid withdrawal amount");
+    require(amount <= balances[msg.sender], "Bank: Invalid withdrawal amount");
+    require(amount > 0, "Bank: Invalid withdrawal amount");
     balances[msg.sender] -= amount;
     balances[to] += amount;
     emit Transfer(msg.sender, to, amount);
@@ -55,8 +55,8 @@ contract BankVault {
 
   function withdrawTo(uint _amount, address receiver) public {
     uint amount = _amount == 0 ? balances[msg.sender] : _amount;
-    require(amount <= balances[msg.sender], "BankVault: Invalid withdrawal amount");
-    require(amount > 0, "BankVault: Invalid withdrawal amount");
+    require(amount <= balances[msg.sender], "Bank: Invalid withdrawal amount");
+    require(amount > 0, "Bank: Invalid withdrawal amount");
     balances[msg.sender] -= amount;
     system.withdrawEth{value: amount}(receiver);
     emit Withdrawal(msg.sender, receiver, amount);
