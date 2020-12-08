@@ -14,5 +14,5 @@ docker run \
   ethereum/solc:stable \
   --optimize --optimize-runs=99999 \
   --abi --bin -o /src/build \
-  contracts/BankVault.sol \
+  contracts/Bank.sol \
   --base-path /src --allow-paths /src/contracts

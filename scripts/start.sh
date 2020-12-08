@@ -27,7 +27,7 @@ then
   echo "CONTRACT_ADDR=$CONTRACT_ADDR" >> "$ORIG_DIR/.env"
 fi
 
-if [ -z $WORK_DIR ]
+if [ -z $WORK_DIR -o ! -d $WORK_DIR ]
 then
   WORK_DIR=$(mktemp -d)
   cd $WORK_DIR

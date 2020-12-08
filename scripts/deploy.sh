@@ -7,7 +7,7 @@ source .env
 
 ORIG_DIR=$(pwd)
 
-if [ -z $WORK_DIR ]
+if [ -z $WORK_DIR -o ! -d $WORK_DIR ]
 then
   WORK_DIR=$(mktemp -d)
   cd $WORK_DIR
